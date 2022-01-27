@@ -38,12 +38,11 @@ const moveToArgsId = Id.create(
   "MoveToArgs",
 );
 
-export interface MoveToArgs
-  extends
-    LeafProduct,
-    Partial<
-      Record<"x" | "y" | "z", -1 | 0 | 1 | [toEdge: number, shift: number]>
-    > {
+export interface MoveToArgs extends
+  LeafProduct,
+  Partial<
+    Record<"x" | "y" | "z", -1 | 0 | 1 | [toEdge: number, shift: number]>
+  > {
   readonly type: typeof moveToArgsId;
 }
 
@@ -131,11 +130,10 @@ export const moveToZ = Component.create(
 declare global {
   namespace escad {
     interface ConversionsObj {
-      "@escad/builtins/moveTo":
-        (Conversion<
-          MoveTo<TupleProduct<readonly [MoveToArgs, BoundingBox, BoundingBox]>>,
-          Matrix4
-        >);
+      "@escad/builtins/moveTo": (Conversion<
+        MoveTo<TupleProduct<readonly [MoveToArgs, BoundingBox, BoundingBox]>>,
+        Matrix4
+      >);
     }
   }
 }

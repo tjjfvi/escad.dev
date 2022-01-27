@@ -45,9 +45,9 @@ conversionRegistry.register({
   convert: async ({ child: { children: [matrix, mesh] } }) =>
     Mesh.create(
       mesh.faces.map((face) =>
-        Face.create(face.points.map((vector) =>
-          Matrix4.multiplyVector(matrix, vector)
-        ))
+        Face.create(
+          face.points.map((vector) => Matrix4.multiplyVector(matrix, vector)),
+        )
       ),
     ),
   weight: 1,

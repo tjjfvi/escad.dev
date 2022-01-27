@@ -96,9 +96,7 @@ const TreeTextPartView = observer(
               state.selection([
                 ...(state.selection.value ?? []),
                 {
-                  type: event.altKey
-                    ? "exclude"
-                    : "include",
+                  type: event.altKey ? "exclude" : "include",
                   path,
                 },
               ]);
@@ -124,9 +122,9 @@ const TreeTextPartView = observer(
         const selectionStates = linkedProducts.map((x) =>
           resolvedSelection.get(x)
         );
-        const directly =
-          findLast(state.selection() ?? [], (x) => Hash.equal(x.path, path))
-            ?.type ?? null;
+        const directly = findLast(state.selection() ?? [], (x) =>
+          Hash.equal(x.path, path))
+          ?.type ?? null;
         const someNull = selectionStates.some((x) => x == null);
         const included = selectionStates.some((x) => x === true);
         const excluded = selectionStates.some((x) => x === false);
