@@ -1,5 +1,5 @@
 import React from "../../react.ts";
-import { EventEmitter } from "../../tsee.ts";
+import { tsee } from "../../tsee.ts";
 import { MultiSet } from "./MultiSet.ts";
 import { Callable } from "./Callable.ts";
 import { use_ } from "./use_.ts";
@@ -12,7 +12,7 @@ export interface Readable<T> {
   (): T;
 }
 
-class EE extends EventEmitter<{
+class EE extends tsee.EventEmitter<{
   update: () => void;
 }> {}
 
@@ -20,7 +20,7 @@ type Obs<T> = {
   readonly [K in keyof T]: Readable<T[K]>;
 };
 
-export class Readable<T> extends Callable<typeof EE>(EventEmitter) {
+export class Readable<T> extends Callable<typeof EE>(tsee.EventEmitter) {
   value!: T;
   alive = true;
   symb!: symbol;
