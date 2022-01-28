@@ -74,8 +74,9 @@ export function createTranspiler(ctx: TranspilerHost): Transpiler {
 
   async function __transpile(url: string) {
     let content = await fetchFile(url);
-    content = content.replace(/^\/\/ @style (".+")$/g, (_, file: string) => {
+    content = content.replace(/^\/\/ @style (".+")$/gm, (_, file: string) => {
       file = JSON.parse(file);
+      file = new URL(file, url).toString();
       let jsUrl = file.endsWith(".styl")
         ? _transpileStyl(file)
         : _transpileCss(file);
