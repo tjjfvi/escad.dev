@@ -16,7 +16,6 @@ if (typeof window !== "undefined" && window.parent === window) {
 
   let p = new Promise<void>((r) =>
     navigator.serviceWorker.addEventListener("message", (ev) => {
-      console.log(ev.data);
       r();
     })
   );
