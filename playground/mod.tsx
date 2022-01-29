@@ -1,5 +1,3 @@
-/// <reference lib="dom"/>
-
 import "./swApi.ts";
 
 // @style "../client/stylus/index.styl"

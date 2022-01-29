@@ -1,5 +1,3 @@
-/// <reference lib="dom"/>
-
 import React from "../deps/react.ts";
 import ReactDOM from "../deps/react-dom.ts";
 import { App, WebSocketClientState } from "../client/mod.ts";

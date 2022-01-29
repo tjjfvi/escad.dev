@@ -15,7 +15,7 @@ if (typeof window !== "undefined" && window.parent === window) {
   if (!sw) throw new Error("Missing service worker");
 
   let p = new Promise<void>((r) =>
-    navigator.serviceWorker.addEventListener("message", (ev) => {
+    navigator.serviceWorker.addEventListener("message", (_ev) => {
       r();
     })
   );
