@@ -213,8 +213,7 @@ createRendererServerMessenger(
 }
 
 function getInitialCode() {
-  const base =
-`
+  const base = `
 import escad from "#escad/core/mod.ts";
 import { renderFunction, } from "#escad/renderer/mod.ts";
 import { ObjectParam, } from "#escad/core/mod.ts";
@@ -277,12 +276,12 @@ function angleX(){
 function rad( rad : number ){
   return rad * (180 / Math.PI)
 }
-`
+`;
   const code = base.replace(
     /\b((?:import|export)(?: .* from)? ")#escad\//g,
     `$1${escadLocation}/`,
-  )
+  );
 
-  console.log( code )
-  return code 
+  console.log(code);
+  return code;
 }
