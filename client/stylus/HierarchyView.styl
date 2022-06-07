@@ -1,0 +1,139 @@
+
+.TreeNode
+  font-family Inconsolata, monospace
+
+  display flex
+  flex-direction column
+
+  .line
+    display flex
+    flex-direction row
+    align-items center
+
+    height 25px
+    font-size 20px
+    color $lightgrey
+
+    .ellipsis
+      position relative
+      letter-spacing -.25em
+      padding-right .25em
+
+    .openable
+      position relative
+      opacity .5
+      .openable
+        opacity 1
+      &.hover
+        text-decoration underline
+        text-decoration-style dotted
+        text-decoration-thickness 1px
+        text-decoration-color $white
+        text-underline-position from-font
+
+    .selectable.hover
+      border-bottom 1px solid $white
+    
+    ^[-1] .block .line > span > .selectable
+      &:before
+      &:after
+        position absolute
+        border 0 solid $black
+        border-width 3px 0
+        background-clip content-box
+        z-index 0
+      &:before
+        width 15px
+        height 8.25px
+        left -8px
+        transform translate(0px, 6.5px)
+      &:after
+        width 2px
+        height 21px
+        left -1px
+        transform translate(-.5px, 0px)
+      &.directly-null
+      &.directly-include.excluded-true
+        &:before
+          width 9px
+          left -5px
+        &.included-true:before
+          z-index 1
+          height 2px
+          border 0
+          transform translate(0px, 9.5px)
+      &.directly-null
+      &.directly-exclude
+        &:after
+          height 15px
+          transform translate(-.5px, 3px)
+      &.included-true
+        &:before
+        &:after
+          content ""
+          background-color $green
+      &.included-true.someNull-true
+        &:before
+        &:after
+          background-color mix($green, $black, 50%)
+      &.excluded-true
+        &:before
+          content ""
+          background-color $red
+      &.excluded-true.someNull-true
+        &:before
+          background-color mix($red, $black, 50%)
+
+    
+
+    &:hover
+      background-color $darkgrey
+
+    .arrow
+      display flex
+      justify-content center
+      align-items center
+      flex 0 0 auto
+
+      width 25px
+      height 25px
+
+      &:before
+        content ""
+        width 10px
+        height 10px
+        border 0px solid $lightgrey
+        border-right-width 1px
+        border-bottom-width 1px
+        transform unquote("rotate(45deg) translate(-2.5px, -2.5px)")
+      &.closed:before
+        transform unquote("rotate(-45deg) translate(-2.5px, -2.5px)")
+      &.leaf:before
+        border-right-width 0px
+        transform unquote("translate(0, -5px)")
+
+    span
+      flex 1 0 auto
+
+    .expand
+      display flex
+      align-items center
+      justify-content center
+      opacity 0
+      flex 0 0 25px
+      svg
+        fill $grey
+        max-height 100%
+
+    &:hover .expand
+      opacity 1
+
+
+  .block
+    display flex
+    flex-direction column
+
+    margin-left 12px
+    padding-left 12px
+    border-left 1px solid $grey
+    position relative
