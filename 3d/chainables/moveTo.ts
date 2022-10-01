@@ -130,10 +130,10 @@ export const moveToZ = Component.create(
 declare global {
   namespace escad {
     interface ConversionsObj {
-      "@escad/3d/moveTo": (Conversion<
+      "@escad/3d/moveTo": Conversion<
         MoveTo<TupleProduct<readonly [MoveToArgs, BoundingBox, BoundingBox]>>,
         Matrix4
-      >);
+      >;
     }
   }
 }
@@ -145,7 +145,10 @@ const moveToConversionMeshId = Id.create(
   "MoveToConversionMesh",
 );
 
-conversionRegistry.register({
+conversionRegistry.register<
+  MoveTo<TupleProduct<readonly [MoveToArgs, BoundingBox, BoundingBox]>>,
+  Matrix4
+>({
   id: moveToConversionMeshId,
   fromType: MoveTo.createProductType(
     TupleProductType.create([MoveToArgs, BoundingBox, BoundingBox]),
